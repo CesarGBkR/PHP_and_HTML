@@ -11,8 +11,8 @@ function sendMail($subject, $body, $email, $name, $html=false) {
     $phpmailer->Host = 'smtp.mailtrap.io';
     $phpmailer->SMTPAuth = true;
     $phpmailer->Port = 2525;
-    $phpmailer->Username = 'dbfb8cd3bab10f';
-    $phpmailer->Password = '7c4be72a84fb24';
+    $phpmailer->Username = '';
+    $phpmailer->Password = '';
 
     // Send to
     $phpmailer->setFrom('contact@contact.com', 'My company');
