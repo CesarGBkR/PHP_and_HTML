@@ -1,3 +1,35 @@
+<?php
+
+function validate($name, $email, $subject, $message, $form) {
+    return !empty($name) && !empty($email) && !empty($subject) && !empty($message);
+}
+
+$status = "";
+
+if (isset($_POST["form"]) ){
+
+    if(validate(...$_POST) ) {
+
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $subject = $_POST["subject"];
+        $message = $_POST["message"];
+        $form = $_POST["form"];
+        
+        // Send email
+
+        $status = "success";
+
+    
+    }
+    else {
+        $status = "danger";
+    }
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,15 +40,17 @@
     <title>Contact form</title>
 </head>
 <body>
-
+    <?php if($status == "success"): ?>
+        <div class="alert success">
+        <span>Success message send</span>
+    </div>
+    <?php else:?>
     <div class="alert danger">
         <span>There was a problem</span>
     </div>
+    <?php endif;?>
 
-    <div class="alert success">
-        <span>Success message send</span>
-    </div>
-    <form action="#">
+    <form action="./" method="post">
 
         <h1> Contact Us </h1>
 
@@ -41,7 +75,7 @@
         </div>
 
         <div class="button-container">
-            <button type="submit">Send</button>
+            <button name="form" type="submit">Send</button>
         </div>
 
         <div class="contact-info">
